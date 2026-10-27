@@ -10,7 +10,7 @@ def optimize_project(project,inputs,*,records_directory=None,mode='visual',worke
     """Optimize one PNG directory in place, only after CPU and native GPU proof.
 
     Preserves texture UUIDs. No source PSD or exporter dependency is involved.
-    records_directory defaults outside assets; failures preserve diagnostics and
+    records_directory defaults to a unique run directory outside the project; failures preserve diagnostics and
     leave source images/scenes unchanged. Existing gridded PNGs are skipped.
     ``original_project`` lets callers validate an isolated export staging area
     against the destination project's engine/atlas configuration.
@@ -36,7 +36,10 @@ def optimize_project(project,inputs,*,records_directory=None,mode='visual',worke
             if target.exists() and target.read_bytes()!=config.read_bytes():raise ValueError(f'Atlas configuration differs: {target}')
             if not target.exists():shutil.copy2(config,target)
         parent=parent.parent
-    records=Path(records_directory).resolve() if records_directory else project/'.ninegrid/automatic'
+    if records_directory is not None:records=(project/records_directory).resolve()
+    else:
+        history=project.parent/(project.name+'-ninegrid-records');history.mkdir(parents=True,exist_ok=True)
+        records=Path(tempfile.mkdtemp(prefix='run-',dir=history))
     if records.is_relative_to(inputs):
         # Exporters may keep proofs with staged inputs, but never scan proofs.
         if records!=inputs/'export-records/ninegrid':raise ValueError('Proofs must not overlap PNG inputs')

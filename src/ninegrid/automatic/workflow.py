@@ -17,6 +17,8 @@ def optimize_automatically(stage_project,staged,original_project,policy,workers,
     stage_project,staged=Path(stage_project),Path(staged)
     evidence=Path(evidence_directory or staged/'export-records/ninegrid').resolve();(evidence/'originals').mkdir(parents=True,exist_ok=True)
     adapter=LayaProjectAdapter(stage_project,reference_policy='native',allowed_component_types=allowed_component_types)
+    validation_scenes=dict(adapter.project.scene_hashes)
+    validation_atlases={p.relative_to(stage_project).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in (stage_project/'assets').rglob('*.atlascfg')}
     work=Path(work_directory or stage_project/'.ninegrid-auto').resolve()
     work_relative=work.relative_to(stage_project).as_posix()
     advanced_ignores=[name for name in ignore_names if name not in ('icon','ico','图标')]
@@ -133,7 +135,7 @@ def optimize_automatically(stage_project,staged,original_project,policy,workers,
                 ref.node['sizeGrid']=item['layaSizeGrid'];changed_scenes.add(ref.file)
     for name in changed_scenes:
         writes[name]=json_bytes(adapter.project.scenes[name]);expected[name]=adapter.project.scene_hashes[name]
-    transaction=commit(stage_project,writes,'automatic_ninegrid',expected)
+    transaction=None
     for item in items:
         item['applied']=item['status']=='candidate'
         item['finalOutputSize']=item['outputSize'] if item['applied'] else item['sourceSize']
@@ -170,9 +172,8 @@ def optimize_automatically(stage_project,staged,original_project,policy,workers,
     write(evidence/'validation/report.json',dict(valid=True,engine='LayaAir '+version,renderer='Chrome WebGL',cases=accepted_cases))
     write(evidence/'resize-validation/report.json',dict(valid=True,engine='LayaAir '+version,cases=resize_cases))
     write(evidence/'fixed-border-validation.json',dict(valid=True,cases=border_cases))
-    write(evidence/'apply-report.json',dict(status='applied',automatic=True,images=len(accepted),engineValidationPending=False))
     write(evidence/'compatibility.json',dict(projectVersion=version,engineVersion=version,engineLibraries=str(libraries),adapter=ALGORITHM))
-    shutil.copytree(stage_project/'.ninegrid-auto',evidence/'attempts')
+    shutil.copytree(work,evidence/'attempts')
     for file in (evidence/'attempts').rglob('*.json'):
         def normalize(value,key=''):
             if isinstance(value,dict):return {k:normalize(v,k) for k,v in value.items()}
@@ -184,5 +185,23 @@ def optimize_automatically(stage_project,staged,original_project,policy,workers,
                     return (file.parent.parent/value).relative_to(evidence).as_posix()
             return value
         file.write_text(json.dumps(normalize(json.loads(file.read_text())),indent=2)+'\n')
-    print('  自动九宫格完成：'+json.dumps(report['summary']),flush=True)
+    from ..laya.patch import rollback
+    try:
+        current=LayaProjectAdapter(stage_project,reference_policy='native',allowed_component_types=allowed_component_types).project
+        current_atlases={p.relative_to(stage_project).as_posix():hashlib.sha256(p.read_bytes()).hexdigest() for p in (stage_project/'assets').rglob('*.atlascfg')}
+        if current.version!=version or current.scene_hashes!=validation_scenes or current_atlases!=validation_atlases:
+            raise ValueError('Concurrent scene or atlas modification; source resources were not published')
+        expected.update(validation_scenes);expected.update(validation_atlases)
+        transaction=commit(stage_project,writes,'automatic_ninegrid',expected,
+                           details={'proofDirectory':str(evidence)})
+        report['transactionRunId']=transaction
+        report['recordsDirectory']=str(evidence)
+        write(evidence/'report.json',report)
+        write(evidence/'apply-report.json',dict(status='applied' if transaction else 'unchanged',
+              automatic=True,images=len(accepted),engineValidationPending=False,transactionRunId=transaction))
+    except BaseException:
+        if transaction:rollback(stage_project,transaction)
+        raise
+    try:print('  自动九宫格完成：'+json.dumps(report['summary']),flush=True)
+    except BrokenPipeError:pass
     return report

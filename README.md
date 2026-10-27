@@ -151,3 +151,9 @@ NINEGRID_ENGINE_TESTS=1 .venv/bin/python -m pytest -q tests/test_engine.py tests
 `verify_package.py` 可额外接受 `--engine-dir`、`--playwright-module`，验证安装后的真实 GPU apply。`dist/` 可用于本地安装或后续发布；本仓库不会自动上传包。
 
 大规模生成测试的覆盖范围、复现和报告说明见 [生成测试说明](docs/generated-tests.md)。
+
+## 1.1.1 修订
+
+修复自动API的JSON导入及随机工作目录归档。未指定records_directory时，每次在工程外自动创建唯一run目录，重复API/CLI调用不要求人工填写证明路径。所有证明先准备完整再提交；提交后报告写入失败会回滚；PNG/meta与验证依赖的全部scene/atlas配置实施并发检查。`ninegrid.api.restore_original`只在备份哈希、编码生成的当前像素和边界都匹配时返回原图字节，兼容旧strict/visual、guarded/tile、linear与geometryOnly记录。
+
+候选算法及局部细节保护保持1.1.0发布实现；strict仍CPU/GPU零差，自动visual仍逐通道≤1/255、mean≤0.02。修订的实际3.4.2引擎测试与隔离wheel验证独立记录；没有以CPU压力报告替代GPU。

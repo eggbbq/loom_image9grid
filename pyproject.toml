@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "loom-image9grid"
-version = "1.1.0"
+version = "1.1.1"
 description = "Standalone PNG nine-slice optimizer with LayaAir project integration"
 readme = "README.md"
 requires-python = ">=3.11"

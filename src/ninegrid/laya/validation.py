@@ -1,5 +1,6 @@
 """Real-engine pose validation for the automatic candidate API."""
 from pathlib import Path
+import json
 from .runtime import validate_engine_version
 
 def validate_engine(adapter, entries, libraries, version, pool,*,artifact_directory='.ninegrid/validation'):
