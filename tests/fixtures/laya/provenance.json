@@ -1,0 +1,9 @@
+{
+  "engine": "3.4.1",
+  "serialization": "IEditorEnv.HierarchyWriter.write; LayaAir CLI Scene process",
+  "imageGridChange": "node.sizeGrid = \"3,4,5,6,0\" before native serialization",
+  "textureMetaSource": "/Applications/LayaAirIDE.app/Contents/Resources/internal/UI/images/button_normal.png.meta",
+  "textureMetaSha256": "837ac0bff675661aa50faf58b506eeccba8ed3dd1ff7dca1de0d1d64517497d8",
+  "manualGuiChecked": false,
+  "note": "GUI automation unavailable; generated through the actual IDE serializer, not handwritten scene JSON."
+}

@@ -1,0 +1,343 @@
+{
+  "valid": true,
+  "seed": 20261027,
+  "seconds": 342.511,
+  "counts": {
+    "images": 13056,
+    "passedImages": 13056,
+    "failedImages": 0
+  },
+  "stages": {
+    "strict": {
+      "checks": 13056,
+      "passed": 13056,
+      "accepted": 8003,
+      "resizeChecks": 22776,
+      "rejected": 5053
+    },
+    "visual": {
+      "checks": 13056,
+      "passed": 13056,
+      "accepted": 8887,
+      "resizeChecks": 0,
+      "rejected": 4169
+    },
+    "automatic": {
+      "checks": 13056,
+      "passed": 13056,
+      "rejected": 3503,
+      "resizeChecks": 0,
+      "accepted": 9553,
+      "coding:guarded": 61831,
+      "coding:geometry": 33559,
+      "decision:exact_band_guarded_center": 54508,
+      "decision:exact_band_original_png": 14712,
+      "decision:outline_inferred_original_png": 18847,
+      "decision:exact_repeat_bands_native_tile": 6723,
+      "coding:strict": 925,
+      "decision:constant_pixels": 925,
+      "decision:exact_transparent_band_native_tile": 600,
+      "coding:linear": 4,
+      "decision:bounded_linear_center_resample": 4
+    },
+    "png": {
+      "checks": 816,
+      "passed": 816,
+      "mode:RGBA": 136,
+      "mode:RGB": 136,
+      "mode:L": 136,
+      "mode:LA": 136,
+      "mode:P": 68,
+      "mode:1": 68,
+      "mode:I;16": 68,
+      "mode:APNG": 68
+    }
+  },
+  "families": {
+    "exact/random_rgba/both": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/random_rgba/horizontal": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/random_rgba/vertical": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/opaque/both": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/opaque/horizontal": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/opaque/vertical": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/binary_alpha/both": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/binary_alpha/horizontal": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/binary_alpha/vertical": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/soft_alpha/both": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/soft_alpha/horizontal": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/soft_alpha/vertical": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/hidden_rgb/both": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/hidden_rgb/horizontal": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/hidden_rgb/vertical": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/solid/both": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/solid/horizontal": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/solid/vertical": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/hollow/both": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/hollow/horizontal": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/hollow/vertical": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/bevel/both": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/bevel/horizontal": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/bevel/vertical": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/double_border/both": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/double_border/horizontal": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/double_border/vertical": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/corner_marks/both": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/corner_marks/horizontal": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/corner_marks/vertical": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/edge_texture/both": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/edge_texture/horizontal": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/edge_texture/vertical": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/alpha_thresholds/both": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/alpha_thresholds/horizontal": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "exact/alpha_thresholds/vertical": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "blank": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "invisible_noise": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "solid": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "translucent": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "tiny": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "wide": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "tall": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "spike": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "multiple_bands": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "tied_bands": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "short_band": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "gradient_xy": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "gradient_x": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "gradient_y": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "checkerboard": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "noise": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "alpha_noise": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "rounded": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "pill": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "shadow": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "tab": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "center_logo": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "corner_ornaments": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "outer_padding": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "internal_gap": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "near_rgb": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "near_alpha": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "alpha_ramp": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "periodic_center": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "frame_hole": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "text_header": {
+      "images": 192,
+      "passedImages": 192
+    },
+    "radial": {
+      "images": 192,
+      "passedImages": 192
+    }
+  },
+  "failures": [],
+  "configuration": {
+    "variants": 192,
+    "seed": 20261027,
+    "pattern": null,
+    "variant": null,
+    "visual_every": 1,
+    "auto_every": 1,
+    "png_every": 16,
+    "workers": 4,
+    "output": "out/stress/verified-20261027"
+  },
+  "scope": "CPU generation, geometry, resizing and PNG; real GPU sampling requires tests/test_engine.py"
+}

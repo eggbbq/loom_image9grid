@@ -1,0 +1,13 @@
+{
+  "_$ver": 1,
+  "_$id": "amfocto6",
+  "_$type": "Image",
+  "name": "Panel",
+  "x": 12,
+  "y": 14,
+  "width": 60,
+  "height": 40,
+  "skin": "panel.png",
+  "sizeGrid": "3,4,5,6,0",
+  "color": "#ffffff"
+}

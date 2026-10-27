@@ -1,0 +1,4 @@
+include run_9grid.sh
+recursive-include docs *.md *.png *.json
+recursive-include tests *.py *.png *.meta *.lh *.json *.mjs *.ts
+recursive-include scripts *.py

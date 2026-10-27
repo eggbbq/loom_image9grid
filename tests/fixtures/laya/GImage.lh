@@ -1,0 +1,12 @@
+{
+  "_$ver": 1,
+  "_$id": "uyvisy1s",
+  "_$type": "GImage",
+  "name": "Panel",
+  "x": 12,
+  "y": 14,
+  "width": 60,
+  "height": 40,
+  "src": "panel.png",
+  "autoSize": false
+}
